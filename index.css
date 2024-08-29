@@ -1,0 +1,23 @@
+.mainBody{
+    display:grid;
+    grid-template-columns: 500px 1fr;
+    border-radius:10px;
+    box-shadow:1px 1px 10px rgb(227, 222, 222);
+}
+.forCreate{
+    overflow-x:hidden;
+    overflow-y:auto;
+    height:500px;
+    border:1px solid black;
+    padding:10px;
+}
+.forChild1{
+    padding:8px;
+}
+.forInputs input{
+    height:40px;
+    width:220px;
+    border-radius:10px;
+    border:1.5px solid lightgray;
+}
+.forUserName{}
