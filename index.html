@@ -9,12 +9,13 @@
     
 </head>
 <body>
-    <div class="mainBody">
+    <div align=""class="mainBody">
         <div class="forChild1">
             <h3>Create Resume</h3>
+            <p contenteditable="true" default="linkedin">linkedin</p>
             <div class="forCreate">
-                <details>
-                    <p>Personal Details</p>
+                <details id="det">
+                    <!-- <p>Personal Details</p> -->
                     <div class="forInputs container">
                         <div class="row row-cols-2">
                             <div class="col">
@@ -23,7 +24,7 @@
                             </div>
                             <div class="col">
                                 <label for="Email">Email</label>
-                                <input type="text" placeholder="enter your email">
+                                <input type="text" id="email"placeholder="enter your email">
                             </div>
 
                         </div>
@@ -32,24 +33,24 @@
                            
                             <div class="col">
                                 <label for="LastName">LastName</label>
-                                <input type="text" placeholder="enter your Lastname">
+                                <input type="text" id="lastname"placeholder="enter your Lastname">
                             </div>
                             <div class="col">
                                 <label for="MobileNo">Mobile</label>
-                                <input type="text" placeholder="Mobile number">
+                                <input type="text" id="number"placeholder="+919888363746">
                             </div>
-                            
+                        
                         </div>
                         <br>
                         <div class="row row-cols-2">
                            
                             <div class="col">
                                 <label for="Address">Address</label>
-                                <input type="text" placeholder="enter your Address">
+                                <input type="text" id="address" placeholder="enter your Address">
                             </div>
                             <div class="col">
                                 <label for="JobRole">JobRole</label>
-                                <input type="text" placeholder="JobRole">
+                                <input type="text" id="jobrole"placeholder="JobRole">
                             </div>
                             
                         </div>
@@ -59,7 +60,7 @@
             </div>
         </div>
         <div>
-            <h3>Preview Resume</h3>
+            <!-- <h3>Preview Resume</h3> -->
             <div id="previewBody">
 
             </div>

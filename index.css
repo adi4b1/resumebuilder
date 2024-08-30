@@ -1,15 +1,39 @@
 .mainBody{
     display:grid;
     grid-template-columns: 500px 1fr;
-    border-radius:10px;
-    box-shadow:1px 1px 10px rgb(227, 222, 222);
+    grid-gap:60px;
+       
+    
 }
+
+
 .forCreate{
     overflow-x:hidden;
     overflow-y:auto;
     height:500px;
-    border:1px solid black;
+    width:500px;
+    /* border:1px solid black; */
     padding:10px;
+    border-radius:10px;
+    box-shadow:1px 1px 10px rgb(227, 222, 222);
+}
+.forUsernameDiv{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top:40px;
+    
+}
+#previewBody{
+    top:20px;
+    height:99%;
+    overflow-y:auto;
+    max-width:650px;
+    overflow-x:hidden;
+    position:relative;
+    max-height: auto;
+    box-shadow: 1px 1px 10px rgb(227, 222, 222);
 }
 .forChild1{
     padding:8px;
@@ -19,5 +43,29 @@
     width:220px;
     border-radius:10px;
     border:1.5px solid lightgray;
+    
 }
-.forUserName{}
+
+
+.forUserName{
+    font-size: 25px;
+    font-weight:400;
+    /* padding-top:40px; */
+}
+.forLastName{
+    font-size: 25px;
+    font-weight:400;
+}
+.jobRole{
+    font-size:14px;
+}
+.extraTextInfo{
+    font-weight:300;
+    font-size:12px;
+   
+}
+.forExtraInfo{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
