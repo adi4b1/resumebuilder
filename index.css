@@ -1,19 +1,161 @@
+
+
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    /* text-align: justify; */
+    font-family: "Poppins", sans-serif;
+}
+/* .poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+} */
+  
+  /* .poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  } */
+  
+/* p{
+    margin-bottom:-10px;
+} */
 .mainBody{
     display:grid;
     grid-template-columns: 500px 1fr;
     grid-gap:60px;
+    /* position:fixed; */
+    padding-top: 50px;
        
     
 }
+nav{
+    position:fixed;
+    z-index: 100;
+    width:100%;
+    background-color: darkorchid;
+    height:50px;
+}
 
+ul{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.mainul li{
+    list-style-type: none;
+    text-decoration: none;
+    padding:10px;
+    font-size: 20px;
+}
 
 .forCreate{
     overflow-x:hidden;
     overflow-y:auto;
-    height:500px;
-    width:500px;
+    height:460px;
+    width:520px;
     /* border:1px solid black; */
     padding:10px;
+    position:fixed;
     border-radius:10px;
     box-shadow:1px 1px 10px rgb(227, 222, 222);
 }
@@ -22,31 +164,282 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-top:40px;
+    padding-top:10px;
     
 }
 #previewBody{
-    top:20px;
+    top:10px;
     height:99%;
     overflow-y:auto;
     max-width:650px;
     overflow-x:hidden;
     position:relative;
-    max-height: auto;
+    padding:20px;
+    box-sizing: border-box;
+    max-height: 530px;
+    box-sizing: border-box;
     box-shadow: 1px 1px 10px rgb(227, 222, 222);
 }
+.EasyMDEContainer {
+    display: block;
+    padding: 10px;
+}
+.ex-preview{
+    font-size: 14px;
+    font-weight: 10;
+   
+    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+}
+.ex-preview ul{
+    display:flex;
+    flex-direction: column;
+}
+.ex-preview li{
+    text-align: justify;
+    font-size:14px;
+    font-weight: 400;
+    
+}
+.previewFirstExp{
+    display:flex;
+    flex-direction: column;
+    
+}
+.prName{
+    font-size:14px;
+    font-weight: 500;
+}
+.preRole{
+    font-size:14px;
+    font-weight: 500;
+}
+.preLoc{
+    font-size:10px;
+}
+.preStart{
+    font-size:10px;
+}
+.preEnd{
+    font-size:10px;
+}
+.forTextInfoExp{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.forSubDiv{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-gap:10px;
+}
+.subDiv1{
+    display:flex;
+    flex-direction: row;
+}
+.subDiv2{
+    display:flex;
+    flex-direction: row;
+    font-size:10px;
+}
+
+/* ::-webkit-scrollbar{
+    width:20px;
+} */
+
+/* Customize scrollbar width */
+::-webkit-scrollbar {
+    width: 5px; /* Set the width for vertical scrollbars */
+    height: 10px; /* Set the height for horizontal scrollbars */
+}
+
+/* Customize the scrollbar track (background) */
+::-webkit-scrollbar-track {
+    background: #ffffff; /* Set the background of the track */
+}
+
+/* Customize the scrollbar handle (thumb) */
+::-webkit-scrollbar-thumb {
+    background: #76ec4f; /* Set the color of the thumb */
+    border-radius: 4px;
+     /* Optionally add rounded corners */
+}
+
+/* Hover effect on the scrollbar handle */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Change the color of the thumb on hover */
+}
+
 .forChild1{
     padding:8px;
+   /* max-height:530px;
+   height:99%; */
+
 }
-.forInputs input{
+.psummary{
+    height:150px;
+    width:99%;
+    padding:3px;
+    max-width:500px;
+    font-weight: 200;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    outline:none;
+    resize:vertical;
+    
+}
+.pre_exp_summary{
+    font-weight: normal;
+    padding-bottom:18px;
+    text-align:justify;
+    /* line-height:1.3; */
+    font-size:12px;
+    /* word-spacing:1px; */
+    /* letter-spacing:1px; */
+    
+}
+.forSkillIn{
+    padding:10px;
+}
+.forProLan{
+   display:flex;
+   flex-direction: column;
+   grid-gap:10px;
+}
+.forProLan label{
+    padding-left:10px;
+}
+.addLangBlock,.addFrameBlock,.addToolsBlock,.addDbBlock{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    grid-gap:10px;
+    border-radius: 30px;
+    align-items: center;
+    border:1.4px solid black;
+}
+.sub_af_but,.sub_pl_but,.sub_tl_but,.sub_db_but{
+    border:none;
+    outline:none;
+    cursor: pointer;
+    box-shadow: none;
+}
+.addLangBlock img,.addFrameBlock img,.addToolsBlock img,.addDbBlock img{
+    height:30px;width:30px;
+    cursor: pointer;
+    
+}
+.addLangBlock input,.addFrameBlock input,.addToolsBlock input,.addDbBlock input{
+    width:99%;
+    border:none;
+    margin-left:15px;
+    max-width: 388px;
+}
+.forskillDeletion,.forframeDeletion,.forToolDeletion,.forDbDeletion{
+    outline:none;
+    box-shadow:none;
+    background-color: rgb(214,212,212);
+    border:none;
+    position: relative;
+    bottom:10px;
+    /* padding-top:10px; */
+}
+.coverSkill_te,.cre_p_adf_text,.disToolText,.disDbText{
+    position: relative;
+    bottom: 7px;
+    max-width:500px;
+    min-width:10px;
+}
+.coversk,.cre_pre_area,.dispToolArea,.dispDbArea{
+   
+    display:flex;
+    flex-direction: row;
+    margin:10px;
+    padding:10px;
+    justify-content:space-between;
+    grid-gap:20px;
+    height:30px;
+    align-items: flex-start;
+    background-color:rgb(214, 212, 212);
+    border-radius:14px;
+   
+}
+.dispSkill,.dispFrame,.dispTool,.dispdb{
+    display: flex;
+    flex-direction: row;
+    grid-gap:1px;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+.coversk p,.cre_pre_area p,.dispToolArea p,.dispDbArea p{
+    font-size: 14px;
+    /* background-color: rgb(214, 212, 212); */
+    color:black;
+}
+/* .forskillImageDel{
+    width:20px;
+    height:20px;
+    cursor: pointer;
+} */
+input{
     height:40px;
     width:220px;
     border-radius:10px;
     border:1.5px solid lightgray;
+    outline:none;
     
 }
+.forhon{
+    width:20px;
+    height:20px;
+}
+.forhonDeletion{
+    border:none;
+    box-shadow:none;
+    outline:none;
+    background: transparent;
+    
 
+}
+.mainul li:nth-child(2){
+    padding:2px 20px;
+    /* background-color: green; */
+    color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+}
+.mainul li:nth-child(1){
+    color:white;
+}
+.mainul li:nth-child(2):hover{
+    background-color: goldenrod;
+    transition: 0.125s all ease-in-out;
+}
+.addHonor{
+    display: flex;
+    flex-direction: row;
+    padding:4px 150px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin:1.5px;
+    border:2px solid rgb(125, 227, 58);
+    font-size:16px;
+    background-color: white;
+    border-radius: 10px;
+}
 
+.linkInput{
+    height:40px;
+    outline:none;
+    width:200px;
+    border-radius:10px;
+    border:1.5px solid lightgray;
+}
 .forUserName{
     font-size: 25px;
     font-weight:400;
@@ -58,6 +451,8 @@
 }
 .jobRole{
     font-size:14px;
+    position: relative;
+    bottom:10px;
 }
 .extraTextInfo{
     font-weight:300;
@@ -68,4 +463,426 @@
     display:flex;
     flex-direction: row;
     justify-content: center;
+    position:relative;
+    bottom: 16px;
+}
+
+
+.mainblockheading{
+    display: inline;
+    margin-top:-20px;
+    /* max-width:590px; */
+
+}
+.inpelement{
+    font-weight: 500;
+    font-size: 14px;
+}
+.inpeleHr{
+    width:600px;
+    position:relative;
+    bottom:14px;
+    height:2px;
+    margin-bottom:0;
+    background-color: black;
+}
+
+.labellink{
+    width:220px;
+    height:40px;
+    position: static; 
+    padding:6px; 
+    border-radius:10px;
+    border:1.5px solid lightgray;
+}
+.Link_button{
+    display: flex;
+    flex-direction: row;
+    padding:4px 150px;
+    border:2px solid rgb(125, 227, 58);
+    outline:none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius:10px;
+    margin-left:40px;
+    margin-bottom:10px;
+    
+}
+#educreate,#procreate,#certcreate{
+    display: flex;
+    flex-direction: row;
+    padding:4px 150px;
+    border:2px solid rgb(125, 227, 58);
+    outline:none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius:10px;
+    margin-left:20px;
+    margin-bottom:10px;
+}
+#addExp{
+    display: flex;
+    flex-direction: row;
+    padding:4px 150px;
+    border:2px solid rgb(125, 227, 58);
+    outline:none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius:10px;
+    margin-left:40px;
+    margin-bottom:10px;
+}
+.bi-pencil{
+    padding-bottom:2px;
+}
+.linkB{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex:1fr 1fr 40px;
+    max-width:500px;
+    width:99%;
+    justify-content: space-between;
+    padding-left:2px;
+    margin:4px;
+    grid-gap:6px;
+}
+.forAnchor{
+    text-decoration: none;
+    cursor: pointer;
+    color:rgb(141, 137, 137);
+    position:relative;
+    bottom:30px;
+    font-size: 10px;
+}
+.forDeletion{
+  
+    box-shadow:none;
+    width:40px;
+    outline:none;
+    border:none;
+    background-color: white;
+}
+
+.forexpDeletion{
+    padding-bottom:9px;
+    box-shadow:none;
+    width:40px;
+    outline:none;
+    border:none;
+    background-color: white;
+}
+.pctitleCss{
+    font-size:14px;
+    font-weight: 700;
+}
+.forepLabel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.foreduDeletion{
+    padding-bottom:9px;
+    box-shadow:none;
+    width:40px;
+    outline:none;
+    border:none;
+    background-color: white;
+}
+.heading_delBut{
+    display: flex;
+    flex-direction: row;
+    grid-gap:20px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.fori{
+    width:20px;
+    height:20px;
+    cursor: pointer;
+}
+.forskillImageDel{
+    width:20px;
+    height:20px;
+    cursor: pointer;
+}
+.fori:hover{
+    width:22px;
+    height:22px;
+    transition:0.125s all ease-out;
+    border-radius: 2px;
+    background-color: beige;
+}
+.forSelect{
+    height:40px;
+    width:200px;
+    position: relative;
+    border-radius:10px;
+    border:1.5px solid lightgray;
+}
+.forEduBlock{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex:1fr 1fr;
+    max-width:500px;
+    width:99%;
+    justify-content: space-between;
+    padding-left:2px;
+    margin:4px;
+    grid-gap:6px;
+}
+.forEduBlock input{
+    outline:none;
+    width:200px;
+    height:40px;
+}
+.forAlignEduContent{
+    display:flex;
+    flex-direction: row;
+    grid-gap:20px;
+    padding-left: 20px;
+}
+
+.mainEduBlockSpace{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:baseline;
+    align-content: end;
+    padding:4px;
+}
+h4{
+    font-weight: 200;
+    font-size:14px;
+}
+
+.degfosBlock{
+    display:flex;
+    flex-direction: row;
+    grid-gap:4px;
+}
+
+.scorecardBlock{
+    display:flex;
+    flex-direction: row;
+    grid-gap:4px;
+}
+
+.datablockBlock{
+    display:flex;
+    flex-direction: row;
+    grid-gap:4px;
+}
+
+.forCollegeName{
+    width:99%;
+    position:relative;
+    max-width: 200px;
+    font-size: 12px;
+    font-weight:300;
+}
+.forDegreeName,.forFosName,.forLocationName,.forStartName,.forEndName,.forScoreTypeName,.forScoreNum{
+font-size: 12px;
+font-weight:300;
+}
+
+
+
+/* //////////////////for projects */
+
+
+.childInPro{
+    display:flex;
+    flex-direction: column;
+    grid-gap:10px;
+    margin-bottom:30px;
+    justify-content: center;
+    /* align-items: center; */
+   
+}
+.childInPro input{
+    max-width:400px;
+    width:99%;
+}
+
+
+.rmprodiv{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.pdiv1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.pdiv2{
+    display: flex;
+    
+}
+.nameL{
+    display: flex;
+    flex-direction: row;
+    max-width:400px;
+    width:99%;
+    align-items: baseline;
+    grid-gap:8px;
+}
+
+.pro_textarea{
+    max-width:400px;
+    width:99%;
+    border:1px solid black;
+    overflow-y: auto;
+    padding:10px;
+    border-radius: 10px;
+    overflow-x: hidden;
+    box-shadow: 1px 1px 10px rgb(192, 187, 187);
+}
+.pdesc{
+    font-size: 14px;
+    font-weight:normal;
+    overflow:hidden;
+    /* max-width:400px; */
+}
+.project_head_css{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.forproDeletion,.forcertDeletion{
+    box-shadow:none;
+    width:40px;
+    outline:none;
+    border:none;
+    background-color: white;
+}
+
+.forproIm,.forcertIm{
+    width:20px;
+    height:20px;
+    cursor: pointer;
+}
+.proTitle_css{
+    font-size: 18px;
+    font-weight: 500;
+}
+.ptech_css{
+    font-size:12px;
+    font-weight:400;
+}
+.pname_css{
+    font-size: 14px;
+    font-weight:600;
+}
+
+
+/* /////////certificates */
+
+.labelcertDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+.labeltextCss{
+    font-size: 16px;
+    font-weight:700;
+}
+.inputlabels{
+    display:flex;
+    flex-direction: column;
+    grid-gap:10px;
+    margin-bottom:30px;
+    justify-content: center;
+}
+
+.inputlabels input{
+    max-width: 400px;
+    width:99%;
+}
+.listText::before{
+    content: '\2022';  /* Unicode bullet character */
+    margin-right: 8px; /* Adds space between bullet and text */
+    color: black;      /* Optional: Set bullet color */
+    font-size: 18px;   /* Optional: Adjust bullet size */
+}
+.listText{
+    max-width:300px;
+    width:99%;
+    color:gray;
+    text-decoration: none;
+    font-size:14px;text-align: justify;
+    line-height: 16px;
+}
+.linkkkkk{
+    display:flex;
+    flex-direction: row;
+    width:99%;
+    max-width:580px;
+    /* max-height:auto;
+    height: 95%; */
+    align-items: center;
+}
+.pissuedBy::before{
+    content: '\2013';  /* Unicode bullet character */
+    margin-right: 8px; /* Adds space between bullet and text */
+    color: black;      /* Optional: Set bullet color */
+    font-size: 14px; 
+    font-weight: bolder;
+}
+.pissuedBy{
+    max-width: 200px;
+    width:99%;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    grid-gap:10px;
+    font-size: 12px;
+    padding-left:5px;
+
+}
+
+
+.honor_text{
+    font-size:12px;
+    margin-bottom: 2px;
+    
+}
+.honor_text::before{
+    content: '\2022';  /* Unicode bullet character */
+    margin-right: 8px; /* Adds space between bullet and text */
+    color: black;      /* Optional: Set bullet color */
+    font-size: 18px;  
+}
+.mainHon{
+    display:flex;
+    flex-direction: column;
+    
+}
+.hblock{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.onorInput{
+    display:flex;
+    max-width:400px;
+    width:98%;
+    margin: 5px;
+
 }
