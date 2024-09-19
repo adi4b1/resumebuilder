@@ -340,27 +340,37 @@ ul{
     background-color: rgb(214,212,212);
     border:none;
     position: relative;
-    bottom:10px;
+    /* bottom:10px; */
     /* padding-top:10px; */
 }
 .coverSkill_te,.cre_p_adf_text,.disToolText,.disDbText{
     position: relative;
-    bottom: 7px;
+    bottom: 0px;
     max-width:500px;
     min-width:10px;
+    margin-bottom:-2px;
 }
 .coversk,.cre_pre_area,.dispToolArea,.dispDbArea{
    
-    display:flex;
+    display: flex;
     flex-direction: row;
-    margin:10px;
-    padding:10px;
-    justify-content:space-between;
-    grid-gap:20px;
-    height:30px;
+    margin: 10px;
+    padding: 6px;
+    justify-content: space-between;
+    grid-gap: 20px;
+    /* height: auto; */
     align-items: flex-start;
-    background-color:rgb(214, 212, 212);
-    border-radius:14px;
+    background-color: rgb(214, 212, 212);
+    border-radius: 14px;
+    /* width: 99%; */
+    /* max-width: 400px; */
+    /* text-align: justify; */
+    word-wrap: break-word;
+    white-space: normal;
+    word-break: break-all;
+    align-items:center;
+    max-height: auto;
+   
    
 }
 .dispSkill,.dispFrame,.dispTool,.dispdb{
@@ -477,6 +487,13 @@ input{
 .inpelement{
     font-weight: 500;
     font-size: 14px;
+    padding-top:25px;
+}
+.foredudiV2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top:8px;
 }
 .inpeleHr{
     width:600px;
@@ -630,26 +647,30 @@ input{
 }
 .forEduBlock{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    flex:1fr 1fr;
+    /* flex:1fr 1fr; */
     max-width:500px;
     width:99%;
-    justify-content: space-between;
-    padding-left:2px;
-    margin:4px;
-    grid-gap:6px;
+    /* justify-content: space-between; */
+    /* padding-left:2px; */
+    /* margin:4px; */
+    grid-gap:2px;
 }
 .forEduBlock input{
     outline:none;
     width:200px;
     height:40px;
 }
+.headedu{
+font-size: 16px;
+font-weight:600;
+}
 .forAlignEduContent{
     display:flex;
     flex-direction: row;
     grid-gap:20px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 
 .mainEduBlockSpace{
@@ -657,13 +678,9 @@ input{
     flex-direction: row;
     justify-content: space-between;
     align-items:baseline;
-    align-content: end;
-    padding:4px;
+    
 }
-h4{
-    font-weight: 200;
-    font-size:14px;
-}
+
 
 .degfosBlock{
     display:flex;
@@ -681,14 +698,48 @@ h4{
     display:flex;
     flex-direction: row;
     grid-gap:4px;
+    max-width:560px;
+    width:99%;
 }
-
+.pre_proLan,.preview_add_frame_css,.right_tool_preview_css,.right_db_previewcss{
+    display: flex;
+    font-size:13px;
+    max-width:580px;
+    padding:0px;
+    width:99%;
+    /* word-wrap: break-word; */
+    /* overflow-wrap: break-word;
+    white-space: normal; */
+    /* line-break:loose;
+    text-align: justify; */
+    /* width: 620px;  */
+    word-wrap: break-word; /* Allow words to break if necessary */
+    white-space: normal; /* Enable text wrapping */
+    word-break: break-all; /* Break at any character if needed */
+     /* Just for visibility */
+   
+}
+.prev_pr_ski,.pre_af_s,.right_side_preview_textcssS,.right_side_preview_dbtextcss{
+    width: 400px; /* Limit the container's width */
+    word-wrap: break-word; /* Allow words to break if necessary */
+    white-space: normal; /* Enable text wrapping */
+    word-break: break-all; /* Break at any character if needed */
+    font-weight: 300;
+    margin-bottom:2px;
+}
+.forSkillLabel{
+    font-weight: 500;
+    width:200px;
+    /* border:1px solid black; */
+   
+  
+}
 .forCollegeName{
     width:99%;
-    position:relative;
+    /* position:relative; */
     max-width: 200px;
-    font-size: 12px;
-    font-weight:300;
+    font-weight: 500;
+    font-size:14px;
 }
 .forDegreeName,.forFosName,.forLocationName,.forStartName,.forEndName,.forScoreTypeName,.forScoreNum{
 font-size: 12px;

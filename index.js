@@ -187,7 +187,7 @@ inpelehr.classList.add('inpeleHr')
 mainBlockHeading.append(inPElement,inpelehr)
 mainBlockHeading.style.display="none"
 function education(){
-
+let create_hl=document.createElement('div')
   let deleduBut=document.createElement('button')
   
   // delBut.textContent='del'
@@ -198,12 +198,15 @@ function education(){
   
   deleduBut.append(image)
   deleduBut.classList.add('delEduBlock')
-  deleduBut.style.display="none"
+  deleduBut.style.display="block"
 
   let headingLabel=document.createElement('div')
   headingLabel.classList.add('heading_delBut')
   let inHeading=document.createElement('h3')
+  inHeading.classList.add('headedu')
+  inHeading.textContent="Institution name"
   headingLabel.append(inHeading,deleduBut)
+  create_hl.append(headingLabel)
   let div1=document.createElement('div')
   div1.classList.add('forAlignEduContent')
   let instituion=document.createElement('input')
@@ -242,7 +245,7 @@ function education(){
   score.setAttribute('placeholder','enter your score')
   div4.append(scoreType,score)
   
-  eduTab.append(headingLabel,div1,div2,div3,div4)
+  eduTab.append(create_hl,div1,div2,div3,div4)
 
 
 //////education block right side code
@@ -254,7 +257,7 @@ let com_edu=document.createElement('div')
 com_edu.classList.add('mainEduBlockSpace')
 let edu_div1=document.createElement('div')
 
-let college_name=document.createElement('h4')
+let college_name=document.createElement('p')
 college_name.classList.add('forCollegeName')
 
 let degfos=document.createElement('div')
@@ -278,6 +281,7 @@ scorecard.append(scoretype_name,scoreNum)
 edu_div1.append(college_name,degfos,scorecard)
 
 let edu_div2=document.createElement('div')
+edu_div2.classList.add('foredudiV2')
 
 
   
@@ -297,13 +301,14 @@ edu_div2.append(location_name,datablock)
 
 
   instituion.addEventListener('input',(e)=>{
-    deleduBut.style.display="block";
-    inHeading.textContent=e.target.value.substr(0,25)
-    college_name.textContent=e.target.value
-    if(e.target.value.length<1){
-      deleduBut.style.display="none";
+    if(e.target.value.length>0){
+      inHeading.textContent=e.target.value.substr(0,25)
+      
+    }else{
+      inHeading.textContent="Institution name"
     }
-    
+    // deleduBut.style.display="block";
+    college_name.textContent=e.target.value
   })
 
   location.addEventListener('input',(e)=>{
@@ -582,6 +587,11 @@ sum.addEventListener('input',(e)=>{
 
 
 // for skillssssssssssssssssss(programming SKILLS)
+let isExecuted=false
+
+
+
+
 
 let mainBlockHeadingskill=document.createElement('div')
 mainBlockHeadingskill.classList.add('mainblockheading')
@@ -592,81 +602,93 @@ let inpeleskillhr=document.createElement('hr')
 inpeleskillhr.classList.add('inpeleHr')
 mainBlockHeadingskill.append(inPskillElement,inpeleskillhr)
 mainBlockHeadingskill.style.display="none"
-
-
-
-  let alangb=document.querySelector('.addLangBlock')
-  let forChildIn=document.querySelector('.addlan')
-
-
-  let main_skill_div=document.createElement('div')
-  let sub_pl=document.querySelector('.sub_pl_but')
-  let inv=''
-
-  forChildIn.addEventListener('input',(e)=>{
-    inv=e.target.value
-  })
-
-  sub_pl.addEventListener('click',()=>{
-    
-    get_pl_data(inv)
-    forChildIn.value=''
-  })
-
-  // let mainBlockHeadingskill=document.createElement('div')
-  //   mainBlockHeadingskill.classList.add('mainblockheading')
-  //   let inPskillElement=document.createElement('p')
-  //   inPskillElement.textContent="Experience"
-  //   inPskillElement.classList.add('inpelement')
-  //   let inpeleskillhr=document.createElement('hr')
-  //   inpeleskillhr.classList.add('inpeleHr')
-  //   mainBlockHeadingskill.append(inPskillElement,inpeleskillhr)
-
-    
-  function get_pl_data(data){
-
-    
-    
-
-    // let main_skill_div=document.createElement('div')
-    let pre_pro_lan=document.createElement('div')
-
-    pre_pro_lan.textContent="Programming Languages:"
-    pre_pro_lan.classList.add('pre_proLan')
-
-    let skilldis=document.querySelector('.dispSkill')
-    let coverSkill=document.createElement('div')
-    let coverSkill_text=document.createElement('p')
-    
-    let preview_proskill=document.createElement('p')
-    
-    let delskillBut=document.createElement('button')
-    delskillBut.textContent="x"
-
-    delskillBut.classList.add('forskillDeletion')
-    
-    coverSkill_text.classList.add('coverSkill_te')
-
-
-    coverSkill.append(coverSkill_text,delskillBut)
-    coverSkill.classList.add('coversk')
-      preview_proskill.textContent+=','+data
-      coverSkill_text.textContent+=data
-    pre_pro_lan.append(preview_proskill)
-    console.log('passed',data);
-    skilldis.append(coverSkill)
-
-    function deleteProSkill(){
-      coverSkill.remove()
-    }
-
-    delskillBut.addEventListener('click',(e)=>{
-      deleteProSkill()
-      pre_pro_lan.remove()
-      console.log(e.target)
-    })
-    main_skill_div.append(mainBlockHeadingskill,pre_pro_lan)
+function toggleDisplay(){
+  if(isExecuted){
+    mainBlockHeadingskill.style.display="block"
+  }else{
+    mainBlockHeadingskill.style.display="none"
   }
+}
+
+let alangb = document.querySelector('.addLangBlock');
+let forChildIn = document.querySelector('.addlan');
+
+let main_skill_div = document.createElement('div');
+let sub_pl = document.querySelector('.sub_pl_but');
+let inv = '';
+let res = '';
+
+// Capture input value
+forChildIn.addEventListener('input', (e) => {
+  inv = e.target.value;
+  isExecuted = true; // Mark event as executed
+  toggleDisplay();
+  
+});
+
+// Handle skill addition
+sub_pl.addEventListener('click', () => {
+  get_pl_data(inv);
+  forChildIn.value = ''; // Clear input field after adding
+});
+
+// Function to handle skill data and display
+let pre_pro_lan = document.createElement('div');
+let preview_proskill = document.createElement('p'); // Separate for skill text
+
+function get_pl_data(data) {
+  
+  // Add text to the preview section
+  if (res.length > 0) {
+    res += ', ' + data.trim();
+  } else {
+    res = data;
+  }
+
+  pre_pro_lan.innerHTML = "<span class='forSkillLabel'>Programming Languages:&nbsp; </span>"; // Ensure this part stays fixed
+  pre_pro_lan.classList.add('pre_proLan');
+  
+  preview_proskill.textContent = res; // Update the skill text only
+preview_proskill.classList.add('prev_pr_ski')
+  let skilldis = document.querySelector('.dispSkill');
+  let coverSkill = document.createElement('div');
+  let coverSkill_text = document.createElement('p');
+  
+  let delskillBut = document.createElement('button');
+  delskillBut.textContent = "x"; // Delete button
+
+  delskillBut.classList.add('forskillDeletion');
+  coverSkill_text.classList.add('coverSkill_te');
+
+  // Append elements
+  coverSkill.append(coverSkill_text, delskillBut);
+  coverSkill.classList.add('coversk');
+  
+  coverSkill_text.textContent = data; // Set skill text
+  pre_pro_lan.append(preview_proskill); // Append preview section only once
+
+  skilldis.append(coverSkill);
+
+  // Handle skill deletion
+  delskillBut.addEventListener('click', (e) => {
+    deleteProSkill();
+    
+    let checkWord = e.target.parentElement.textContent.slice(0, -1); // Get the word to remove (without 'x')
+    if (res.includes(checkWord)) {
+      res = res
+      .replace(new RegExp(`\\s*,?\\b${checkWord}\\b,?\\s*`), '') // Remove the word and any surrounding commas/spaces
+      .replace(checkWord, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
+      preview_proskill.textContent = res; // Reflect the updated text
+    }
+  });
+
+  // Function to remove the skill block
+  function deleteProSkill() {
+    coverSkill.remove(); // Remove the skill block
+  }
+
+  main_skill_div.append(pre_pro_lan);
+}
 
 
   // for skillssssssssssssssssss(frameworks SKILLS)
@@ -677,27 +699,40 @@ let addFrames=document.querySelector('.addFrame')
 let fr_but=document.querySelector('.sub_af_but')
 
 let preview_add_frame=document.createElement('div')
-
+preview_add_frame.classList.add('preview_add_frame_css')
 
 let frames_value=''
-
+let ar_fr=""
 addFrames.addEventListener('input',(e)=>{
   frames_value=e.target.value
+  isExecuted = true; // Mark event as executed
+  toggleDisplay();
 })
 
 fr_but.addEventListener('click',(e)=>{
   get_af_data(frames_value)
+
   addFrames.value=''
 })
 
-
+let preview_af_t=document.createElement('p')
+preview_af_t.classList.add('pre_af_s')
 function get_af_data(af_data){
+  preview_add_frame.innerHTML="<span class='forSkillLabel'>Libraries/framework:&nbsp;  </span>"
+
+  if(ar_fr.length>0){
+    ar_fr+=", "+af_data
+  }else{
+    ar_fr=af_data
+  }
+  console.log(ar_fr);
+  
   // console.log(af_data);
   let cre_preview_area=document.createElement('div')
   cre_preview_area.classList.add('cre_pre_area')
   let cre_preview_area_text=document.createElement('p')
   cre_preview_area_text.classList.add('cre_p_adf_text')
-  let preview_af_t=document.createElement('p')
+  
   let delFrameBut=document.createElement('button')
 
 
@@ -707,7 +742,7 @@ function get_af_data(af_data){
 
   cre_preview_area_text.textContent=af_data
 
-  preview_af_t.textContent=af_data
+  preview_af_t.textContent=ar_fr
   cre_preview_area.append(cre_preview_area_text,delFrameBut)
   frames.append(cre_preview_area)
 
@@ -715,16 +750,23 @@ function get_af_data(af_data){
 
 
   
-  function deleteAf(){
-    preview_af_t.remove()
-    cre_preview_area.remove()
-    delFrameBut.remove()
-  }
+ 
 
-  delFrameBut.addEventListener('click',()=>{
+  delFrameBut.addEventListener('click',(e)=>{
     deleteAf()
+    let checkWordaf = e.target.parentElement.textContent.slice(0, -1); // Get the word to remove (without 'x')
+    if (ar_fr.includes(checkWordaf)) {
+      ar_fr = ar_fr
+      .replace(new RegExp(`\\s*,?\\b${checkWordaf}\\b,?\\s*`), '') // Remove the word and any surrounding commas/spaces
+      .replace(checkWordaf, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
+      preview_af_t.textContent = ar_fr; // Reflect the updated text
+    }
   })
-
+  function deleteAf(){
+    // preview_af_t.remove()
+    cre_preview_area.remove()
+    // delFrameBut.remove()
+  }
   preview_add_frame.append(preview_af_t)
 }
 
@@ -743,28 +785,39 @@ let tIn=document.querySelector('.addTool')
 
 let ad_tool_but=document.querySelector('.sub_tl_but')
 let tooladd=""
+let tstr=''
 tIn.addEventListener('input',(e)=>{
   tooladd=e.target.value
+  isExecuted = true; // Mark event as executed
+  toggleDisplay();
 })
 
 ad_tool_but.addEventListener('click',(e)=>{
-  tIn.value=""
-  addTools(tooladd)
  
+  addTools(tooladd)
+  tIn.value=""
 })
 
+let right_side_preview_text=document.createElement('p')
+right_side_preview_text.classList.add('right_side_preview_textcssS')
 function addTools(tool){
-
+  right_tool_preview.innerHTML="<span class='forSkillLabel'>Tools & platforms :&nbsp; </span> "
+  right_tool_preview.classList.add('right_tool_preview_css')
+  if(tstr.length>0){
+    tstr+=' ,'+tool
+  }else{
+    tstr=tool
+  }
     let toolDiv=document.createElement('div')
     toolDiv.classList.add('dispToolArea')
     let toolDivText=document.createElement('p')
     toolDivText.classList.add('disToolText')
-    toolDivText.textContent+=tool
+    toolDivText.textContent=tool
 
     let delToolBut=document.createElement('button')
 
-    let right_side_preview_text=document.createElement('p')
-    right_side_preview_text.textContent=tool
+   
+    right_side_preview_text.textContent=tstr
     delToolBut.textContent="x"
   
     delToolBut.classList.add('forToolDeletion')
@@ -774,13 +827,20 @@ function addTools(tool){
     
     
     delToolBut.addEventListener('click',(e)=>{
-      deleteTool()
+      deleteTool();
+      let checkWordstool = e.target.parentElement.textContent.slice(0, -1); // Get the word to remove (without 'x')
+    if (tstr.includes(checkWordstool)) {
+      tstr = tstr
+      .replace(new RegExp(`\\s*,?\\b${checkWordstool}\\b,?\\s*`), '') // Remove the word and any surrounding commas/spaces
+      .replace(checkWordstool, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
+      right_side_preview_text.textContent = tstr; // Reflect the updated text
+    }
     })
 
     function deleteTool(){
       toolDiv.remove()
-      right_side_preview_text.remove()
-      delToolBut.remove()
+      // right_side_preview_text.remove()
+      // delToolBut.remove()
 
     }
 
@@ -797,30 +857,40 @@ let dbArea=document.querySelector('.dispdb')
 //////FOR RIGHT SIDE PREVIEW DIV
 let right_db_preview=document.createElement('div')
 
-
+right_db_preview.classList.add('right_db_previewcss')
 
 
 let dIn=document.querySelector('.adddb')
 
 let ad_db_but=document.querySelector('.sub_db_but')
 let dbtextadd=""
+let dbstr=''
 dIn.addEventListener('input',(e)=>{
   dbtextadd=e.target.value
+  isExecuted = true; // Mark event as executed
+  toggleDisplay();
 })
 
 ad_db_but.addEventListener('click',(e)=>{
-  dIn.value=""
+  
   adddb(dbtextadd)
+  dIn.value=""
  
 })
-
+let right_side_preview_dbtext=document.createElement('p')
+right_side_preview_dbtext.classList.add('right_side_preview_dbtextcss')
 function adddb(db){
-
+  right_db_preview.innerHTML="<span class='forSkillLabel'>Databases :&nbsp; </span> "
+  if(dbstr.length>0){
+    dbstr+=" ,"+db
+  }else{
+    dbstr=db
+  }
     let dbDiv=document.createElement('div')
     dbDiv.classList.add('dispDbArea')
     let dbDivText=document.createElement('p')
     dbDivText.classList.add('disDbText')
-    dbDivText.textContent+=db
+    dbDivText.textContent=db
 
     let deldbBut=document.createElement('button')
 
@@ -830,19 +900,23 @@ function adddb(db){
     dbDiv.append(dbDivText,deldbBut)
   
   dbArea.append(dbDiv)
-
-    let right_side_preview_dbtext=document.createElement('p')
-    right_side_preview_dbtext.textContent=db
-
-    
+    right_side_preview_dbtext.textContent=dbstr
     deldbBut.addEventListener('click',(e)=>{
       deleteDb()
+      let checkWorddb = e.target.parentElement.textContent.slice(0, -1); // Get the word to remove (without 'x')
+    if (dbstr.includes(checkWorddb)) {
+      dbstr = dbstr
+      .replace(new RegExp(`\\s*,?\\b${checkWorddb}\\b,?\\s*`), '') // Remove the word and any surrounding commas/spaces
+      .replace(checkWorddb, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
+      right_side_preview_dbtext.textContent = dbstr; // Reflect the updated text
+    }
     })
 
     function deleteDb(){
       dbDiv.remove()
-      right_side_preview_dbtext.remove()
-      deldbBut.remove()
+      
+      // right_side_preview_dbtext.remove()
+      // deldbBut.remove()
 
     }
 
@@ -1139,7 +1213,7 @@ let pre_honor=document.createElement('div')
 let mainBlockHeadinghon=document.createElement('div')
 mainBlockHeadinghon.classList.add('mainblockheading')
 let inPhonElement=document.createElement('p')
-inPhonElement.textContent="Certifications"
+inPhonElement.textContent="Honors & awards"
 inPhonElement.classList.add('inpelement')
 let inpelehonhr=document.createElement('hr')
 inpelehonhr.classList.add('inpeleHr')
@@ -1193,7 +1267,16 @@ previewBody.append(divs,jobRole,extraInfo,linksDisplay,pre_sum,mainBlockHeading,
   mainBlockHeadingexp,expPreDiv,mainBlockHeadingskill,main_skill_div,preview_add_frame,
   right_tool_preview,right_db_preview,mainBlockHeadingpro,right_pro_preview,mainBlockHeadingcert,preview_certifi,mainBlockHeadinghon,pre_honor)
 
+const button = document.getElementById('download-button');
 
+			function generatePDF() {
+				// Choose the element that your content will be rendered to.
+				const element = document.getElementById('previewBody');
+				// Choose the element and save the PDF for your user.
+				html2pdf().from(element).save();
+			}
+
+			button.addEventListener('click', generatePDF);
 
 
 
