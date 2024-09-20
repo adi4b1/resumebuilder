@@ -727,7 +727,7 @@ font-weight:600;
     font-weight: 300;
     margin-bottom:2px;
 }
-.forSkillLabel{
+.forSkillLabel,.forSkillLabelLib,.forSkillLabeltool,.forSkillLabeldb{
     font-weight: 500;
     width:200px;
     /* border:1px solid black; */

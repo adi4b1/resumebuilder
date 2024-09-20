@@ -617,19 +617,29 @@ let main_skill_div = document.createElement('div');
 let sub_pl = document.querySelector('.sub_pl_but');
 let inv = '';
 let res = '';
-
+sub_pl.disabled=true
 // Capture input value
 forChildIn.addEventListener('input', (e) => {
-  inv = e.target.value;
+  inv = e.target.value.trim();
   isExecuted = true; // Mark event as executed
   toggleDisplay();
+  if(inv.length>0){
+    sub_pl.disabled=false;
+  }else{
+    sub_pl.disabled=true;
+  }
   
 });
 
 // Handle skill addition
 sub_pl.addEventListener('click', () => {
-  get_pl_data(inv);
-  forChildIn.value = ''; // Clear input field after adding
+  
+  if(inv!==""){
+    get_pl_data(inv);
+    forChildIn.value = ''; // Clear input field after adding
+    inv="";
+    sub_pl.disabled=true;
+  }
 });
 
 // Function to handle skill data and display
@@ -679,6 +689,13 @@ preview_proskill.classList.add('prev_pr_ski')
       .replace(new RegExp(`\\s*,?\\b${checkWord}\\b,?\\s*`), '') // Remove the word and any surrounding commas/spaces
       .replace(checkWord, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
       preview_proskill.textContent = res; // Reflect the updated text
+      let lt=document.querySelector('.forSkillLabel')
+      if(preview_proskill.textContent.length>0){
+        
+        lt.style.display="block"
+      }else{
+        lt.style.display="none"
+      }
     }
   });
 
@@ -703,22 +720,32 @@ preview_add_frame.classList.add('preview_add_frame_css')
 
 let frames_value=''
 let ar_fr=""
+fr_but.disabled=true;
 addFrames.addEventListener('input',(e)=>{
-  frames_value=e.target.value
+  frames_value=e.target.value.trim()
   isExecuted = true; // Mark event as executed
   toggleDisplay();
+  if(frames_value.length>0){
+    fr_but.disabled=false;
+  }else{
+    fr_but.disabled=true;
+  }
 })
 
 fr_but.addEventListener('click',(e)=>{
-  get_af_data(frames_value)
-
-  addFrames.value=''
+  
+  if(frames_value!==""){
+    get_af_data(frames_value)
+    addFrames.value=''
+    frames_value=""
+    fr_but.disabled=true;
+  }
 })
 
 let preview_af_t=document.createElement('p')
 preview_af_t.classList.add('pre_af_s')
 function get_af_data(af_data){
-  preview_add_frame.innerHTML="<span class='forSkillLabel'>Libraries/framework:&nbsp;  </span>"
+  preview_add_frame.innerHTML="<span class='forSkillLabelLib'>Libraries/framework:&nbsp;  </span>"
 
   if(ar_fr.length>0){
     ar_fr+=", "+af_data
@@ -761,6 +788,13 @@ function get_af_data(af_data){
       .replace(checkWordaf, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
       preview_af_t.textContent = ar_fr; // Reflect the updated text
     }
+    let ltlib=document.querySelector('.forSkillLabelLib')
+      if(preview_af_t.textContent.length>0){
+        
+        ltlib.style.display="block"
+      }else{
+        ltlib.style.display="none"
+      }
   })
   function deleteAf(){
     // preview_af_t.remove()
@@ -786,22 +820,33 @@ let tIn=document.querySelector('.addTool')
 let ad_tool_but=document.querySelector('.sub_tl_but')
 let tooladd=""
 let tstr=''
+ad_tool_but.disabled=true;
 tIn.addEventListener('input',(e)=>{
-  tooladd=e.target.value
+  tooladd=e.target.value.trim()
   isExecuted = true; // Mark event as executed
   toggleDisplay();
+  if(tooladd.length>0){
+    ad_tool_but.disabled=false;
+  }else{
+    ad_tool_but.disabled=true;
+  }
 })
 
 ad_tool_but.addEventListener('click',(e)=>{
- 
+ if(tooladd!==""){
   addTools(tooladd)
   tIn.value=""
+  tooladd=""
+  ad_tool_but=true;
+
+ }
+ 
 })
 
 let right_side_preview_text=document.createElement('p')
 right_side_preview_text.classList.add('right_side_preview_textcssS')
 function addTools(tool){
-  right_tool_preview.innerHTML="<span class='forSkillLabel'>Tools & platforms :&nbsp; </span> "
+  right_tool_preview.innerHTML="<span class='forSkillLabeltool'>Tools & platforms :&nbsp; </span> "
   right_tool_preview.classList.add('right_tool_preview_css')
   if(tstr.length>0){
     tstr+=' ,'+tool
@@ -835,6 +880,13 @@ function addTools(tool){
       .replace(checkWordstool, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
       right_side_preview_text.textContent = tstr; // Reflect the updated text
     }
+    let lttool=document.querySelector('.forSkillLabeltool')
+    if(right_side_preview_text.textContent.length>0){
+      
+      lttool.style.display="block"
+    }else{
+      lttool.style.display="none"
+    }
     })
 
     function deleteTool(){
@@ -865,22 +917,40 @@ let dIn=document.querySelector('.adddb')
 let ad_db_but=document.querySelector('.sub_db_but')
 let dbtextadd=""
 let dbstr=''
+
+ad_db_but.disabled = true;
+
+
 dIn.addEventListener('input',(e)=>{
-  dbtextadd=e.target.value
+  dbtextadd=e.target.value.trim()
   isExecuted = true; // Mark event as executed
   toggleDisplay();
+
+   // Enable the submit button only if there is text in the input field
+   if (dbtextadd.length > 0) {
+    ad_db_but.disabled = false;  // Enable the button
+  } else {
+    ad_db_but.disabled = true;  // Disable the button if input is empty
+  }
 })
 
-ad_db_but.addEventListener('click',(e)=>{
+
+  ad_db_but.addEventListener('click',(e)=>{
   
-  adddb(dbtextadd)
-  dIn.value=""
- 
-})
+    if (dbtextadd !== "") {
+      adddb(dbtextadd);  // Add the database to the preview
+      dIn.value = "";  // Clear the input field
+      dbtextadd = "";  // Reset dbtextadd
+      ad_db_but.disabled = true;  // Disable the button after adding the entry
+    }
+   
+  })
+
+
 let right_side_preview_dbtext=document.createElement('p')
 right_side_preview_dbtext.classList.add('right_side_preview_dbtextcss')
 function adddb(db){
-  right_db_preview.innerHTML="<span class='forSkillLabel'>Databases :&nbsp; </span> "
+  right_db_preview.innerHTML="<span class='forSkillLabeldb'>Databases :&nbsp; </span> "
   if(dbstr.length>0){
     dbstr+=" ,"+db
   }else{
@@ -909,6 +979,13 @@ function adddb(db){
       .replace(new RegExp(`\\s*,?\\b${checkWorddb}\\b,?\\s*`), '') // Remove the word and any surrounding commas/spaces
       .replace(checkWorddb, '').replace(/,,/g, ',').replace(/^,|,$/g, '').trim(); // Update skill text
       right_side_preview_dbtext.textContent = dbstr; // Reflect the updated text
+    }
+    let ltdb=document.querySelector('.forSkillLabeldb')
+    if(right_side_preview_dbtext.textContent.length>0){
+      
+      ltdb.style.display="block"
+    }else{
+      ltdb.style.display="none"
     }
     })
 
