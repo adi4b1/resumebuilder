@@ -482,7 +482,7 @@ function createExp(){
     // }
     if(e.target.value.length>0){
       // pc_title.textContent="Company name";
-      pc_title.textContent=e.target.value;
+      pc_title.textContent=e.target.value.substr(0,25);
     }
 
   })
@@ -1387,11 +1387,12 @@ previewBody.append(divs,jobRole,extraInfo,linksDisplay,pre_sum,mainBlockHeading,
       
       // Configure html2pdf options to capture the full content
       const opt = {
-        margin: [1, 0.5, 1, 0.5],  // Different margins for top, left, bottom, right
+        margin: 1,  // Different margins for top, left, bottom, right
+        
         filename: 'custom_document.pdf',
-        image: { type: 'png', quality: 0.95 },  // PNG images at 95% quality
+        image: { type: 'png', quality: 1 },  // PNG images at 95% quality
         html2canvas: { scale: 2, scrollY: 0, useCORS: true },  // Enable CORS for images
-        jsPDF: { unit: 'cm', format: 'a4', orientation: 'portrait' }  // A4 size, portrait orientation
+        jsPDF: { unit: 'cm', format: 'letter', orientation: 'portrait' }  // A4 size, portrait orientation
     };
     
       
