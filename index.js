@@ -7,14 +7,13 @@ let mobileNum=document.getElementById('number')
 let address=document.getElementById('address')
 let edu_block=document.createElement('div')
 
-
+let isEntered=false;
 ///for links
 let linkbody=document.querySelector('.linkbody')
 
 let createLinkBut=document.querySelector(".Link_button")
 let linksDisplay=document.createElement('div')
 
-  
 //for link display area
 function createLink(){
 
@@ -31,14 +30,13 @@ function createLink(){
   in2.setAttribute('placeholder','enter valid link')
   let delBut=document.createElement('button')
   
-  // delBut.textContent='del'
   let image=document.createElement('img')
   image.setAttribute('src','download.png')
   image.classList.add('fori')
   delBut.classList.add('forDeletion')
   
   delBut.append(image)
-  console.log(delBut);
+  // console.log(delBut);
   
   linkbody.append(in1,in2,delBut)
   
@@ -48,58 +46,30 @@ function createLink(){
     in2.addEventListener('input',(e)=>{
       anchor.setAttribute('href',e.target.value)
       anchor.setAttribute('target','_blank')
-      
-      // console.log(res);
-      
+        
     })
     linksDisplay.setAttribute('align','center')
     linksDisplay.append(anchor)
   })
-  deleteBtn(anchor,in1,in2,delBut)
-}
-
-function deleteBtn(anchor,in1,in2,delBut){
+  
+  function deleteBtn(){
+   
+      anchor.remove()
+    in1.remove()
+    in2.remove()
+    delBut.remove()
+   
+  
+  }
   delBut.addEventListener('click',()=>{
-    anchor.remove()
-  in1.remove()
-  in2.remove()
-  delBut.remove()
-  storeLocal(anchor,in1,in2,delBut)
+    deleteBtn()
+ 
   })
 }
-// function loadSavedInputs() {
-//   const savedValues = JSON.parse(localStorage.getItem('linkBox')) || [];
-//   savedValues.forEach(value => createLink(value));
-// }
 
-function storeLocal(){
-  let inBlock=linkbody.innerHTML
-  let boxData=document.querySelectorAll('.linkbody input')
-  let inBlockData=Array.from(boxData).map((i)=>i.value)
-  // console.log(inBlockData);
-  
-  
-  localStorage.setItem('blocks',inBlock)
-  localStorage.setItem('blocksData',inBlockData)
-  deleteBtn(anchor,in1,in2,delBut)
-  createLink()
-  // localStorage.setItem('anchor',anchor)
-}
-
-function loadInputs(){
-  let storeIn=localStorage.getItem('blocks')
-  // let storeInData=localStorage.getItem('blocksData')
-  // console.log(storeInData);
-  if(storeIn){
-    linkbody.innerHTML=storeIn
-  }
-  createLink()
- 
-}
 createLinkBut.addEventListener('click',()=>{
   createLink()
-  storeLocal()
-  loadInputs()
+ 
 })
 
 /////for right side preview body
@@ -143,9 +113,11 @@ extraInfo.append(emailEle,number,userAddress)
 
 
 userName.addEventListener('input',(e)=>{
+  isEntered=true
   if(e.target.value.length>10){
+    
     previewBodyh1.textContent=e.target.value;
-    e.target.style.border="1px solid red";
+    // e.target.style.border="1px solid red";
     e.target.style.focus="none";
   }
   
@@ -170,6 +142,13 @@ address.addEventListener('input',(e)=>{
   userAddress.textContent="|"+e.target.value 
 })
 
+
+window.addEventListener('beforeunload',(e)=>{
+  if(isEntered){
+    e.preventDefault()
+  e.returnValue=""
+  }
+})
 
 ////////////for EDUCATIONnnnnnnn
 
@@ -323,11 +302,30 @@ edu_div2.append(location_name,datablock)
   fos.addEventListener('input',(e)=>{
     fos_name.textContent=e.target.value
   })
-  start.addEventListener('input',(e)=>{
-    start_name.textContent=e.target.value+' To ';
+  start.addEventListener('change',(e)=>{
+    
+    let date=new Date(e.target.value)
+    let Year=date.getFullYear();
+    let Month=date.getMonth();
+    
+    let marr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    // for(let i=0;i<marr.length;i++){
+
+    // }
+    let finalMonth=marr[Month]
+    start_name.innerHTML=`${Year} ${finalMonth}`;
   })
-  end.addEventListener('input',(e)=>{
-    end_name.textContent=e.target.value;
+  end.addEventListener('change',(e)=>{
+    let date=new Date(e.target.value)
+    let Year=date.getFullYear();
+    let Month=date.getMonth();
+    
+    let marr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    // for(let i=0;i<marr.length;i++){
+
+    // }
+    let finalMonth=marr[Month]
+    end_name.innerHTML=`To ${Year} ${finalMonth}`;
   })
 
   scoreType.addEventListener('change',(e)=>{
@@ -497,12 +495,31 @@ function createExp(){
     pre_location.innerHTML=e.target.value+' | ';
   })
 
-  pc_start.addEventListener('input',(e)=>{
-    pre_Start.innerHTML=e.target.value+" To ";
+  pc_start.addEventListener('change',(e)=>{
+    let date=new Date(e.target.value)
+    let Year=date.getFullYear();
+    let Month=date.getMonth();
+    
+    let marr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    // for(let i=0;i<marr.length;i++){
+
+    // }
+    let finalMonth=marr[Month]
+    pre_Start.innerHTML=`${Year} ${finalMonth} `;
+    
   })
 
-  pc_end.addEventListener('input',(e)=>{
-    pre_End.innerHTML=" "+e.target.value;
+  pc_end.addEventListener('change',(e)=>{
+    let date=new Date(e.target.value)
+    let Year=date.getFullYear();
+    let Month=date.getMonth();
+    
+    let marr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    // for(let i=0;i<marr.length;i++){
+
+    // }
+    let finalMonth=marr[Month]
+    pre_End.innerHTML=`To ${Year} ${finalMonth}`;
   })
 
 
@@ -522,7 +539,7 @@ function createExp(){
       exp_preview.classList.add('ex-preview')
 
       
-      const easyMDE = new EasyMDE({ element: textA , class:"textC", minHeight: '100px',overFlowY:'auto',margin:'20px',paddingTop:'20px'});
+      const easyMDE = new EasyMDE({ element: textA ,placeholder: "Type your experience here...",  class:"textC", minHeight: '100px',overFlowY:'auto',margin:'20px',paddingTop:'20px'});
 
       easyMDE.codemirror.on("change", function(e) {
         const preview =exp_preview;
@@ -1066,18 +1083,21 @@ project_head.append(proTitle,delproBut)
   let pro_name_label=document.createElement('label')
   pro_name_label.textContent="Project name"
   let pro_name=document.createElement('input')
-
+  pro_name.setAttribute('placeholder','type project name')
   let pro_tech_label=document.createElement('label')
   pro_tech_label.textContent="technogies used"
   let pro_tech=document.createElement('input')
+  pro_tech.setAttribute('placeholder','HTML,CSS,JAVASCRIPT,PYTHON...')
 
   let pro_link_label=document.createElement('label')
   pro_link_label.textContent="project url"
   let pro_link=document.createElement('input')
+  pro_link.setAttribute('placeholder','paster your project url')
   let pro_des_label=document.createElement('label')
   pro_des_label.textContent="Project description"
   let pro_des=document.createElement('textarea')
   pro_des.classList.add('pro_textarea')
+  pro_des.setAttribute('placeholder','Project Description....')
 
   childpb.append(project_head,pro_name_label,pro_name,pro_tech_label,pro_tech,pro_link_label,pro_link,pro_des_label,pro_des)
   pb.append(childpb)
@@ -1093,6 +1113,7 @@ project_head.append(proTitle,delproBut)
   plink_text.style.color="gray"
   let pdes_text=document.createElement('h6')
   pdes_text.classList.add('pdesc')
+
 
   //////event lsiteners for every input
 
@@ -1112,6 +1133,7 @@ project_head.append(proTitle,delproBut)
 
   pro_link.addEventListener('input',(e)=>{
     plink_text.setAttribute('href',e.target.value)
+    plink_text.setAttribute('target','_blank')
     plink_text.textContent="| Link"
   })
 
@@ -1192,13 +1214,16 @@ function createCertificate(){
   let cert_label=document.createElement('label')
   cert_label.textContent="certification name"
   let cert_name=document.createElement('input')
+  cert_name.setAttribute('placeholder','enter certification name')
 
   let link_label=document.createElement('label')
   link_label.textContent="certification link"
   let cert_Link=document.createElement('input')
+  cert_Link.setAttribute('placeholder','type certification link')
   let issue_label=document.createElement('label')
   issue_label.textContent="issued by"
   let issue=document.createElement('input')
+  issue.setAttribute('placeholder','Ex.Google,microsoft')
 
 
   forInpLabels.append(labelcDiv,cert_label,cert_name,link_label,
@@ -1228,6 +1253,7 @@ function createCertificate(){
       ali.textContent=`${e.target.value}`
       cert_Link.addEventListener('input',(e)=>{
         ali.setAttribute('href',e.target.value)
+        ali.setAttribute('target','_blank')
       })
     })
 
@@ -1317,13 +1343,16 @@ function createHonor(){
   delhonBut.classList.add('delhonBlock')
 
   honorBlock.append(hInp,delhonBut)
-
+  // let inphonbox=document.querySelector('.onorInput')
+  // localStorage.setItem('datain',inphonbox)
   honor.append(honorBlock)
 
   let cre_hon_text=document.createElement('p')
 cre_hon_text.classList.add('honor_text')
   hInp.addEventListener('input',(e)=>{
     cre_hon_text.textContent=e.target.value;
+    localStorage.setItem('data',cre_hon_text.textContent)
+    
   })
 
   pre_honor.append(cre_hon_text)
@@ -1337,26 +1366,56 @@ hb.addEventListener('click',()=>{
   createHonor()
 })
 
+// function storelocal(){
+//   localStorage.setItem('jobRole',jobRole.textContent)
+// }
+// storelocal()
 
-
-
+// function getInfo(){
+//   localStorage.getItem('jobRole',jobRole.textContent)
+// }
+// getInfo()
 previewBody.append(divs,jobRole,extraInfo,linksDisplay,pre_sum,mainBlockHeading,edu_block,
   mainBlockHeadingexp,expPreDiv,mainBlockHeadingskill,main_skill_div,preview_add_frame,
   right_tool_preview,right_db_preview,mainBlockHeadingpro,right_pro_preview,mainBlockHeadingcert,preview_certifi,mainBlockHeadinghon,pre_honor)
 
-const button = document.getElementById('download-button');
+  const button = document.getElementById('download-button');
 
-			function generatePDF() {
-				// Choose the element that your content will be rendered to.
-				const element = document.getElementById('previewBody');
-				// Choose the element and save the PDF for your user.
-				html2pdf().from(element).save();
-			}
+  function generatePDF() {
+      // Choose the element that your content will be rendered to.
+      const element = document.getElementById('previewBody');
+      
+      // Configure html2pdf options to capture the full content
+      const opt = {
+        margin: [1, 0.5, 1, 0.5],  // Different margins for top, left, bottom, right
+        filename: 'custom_document.pdf',
+        image: { type: 'png', quality: 0.95 },  // PNG images at 95% quality
+        html2canvas: { scale: 2, scrollY: 0, useCORS: true },  // Enable CORS for images
+        jsPDF: { unit: 'cm', format: 'a4', orientation: 'portrait' }  // A4 size, portrait orientation
+    };
+    
+      
+      // Generate the PDF from the full content
+      html2pdf().set(opt).from(element).save();
+  }
+  
+  button.addEventListener('click', generatePDF);
+  let isChangeInput=false;
+let inputt=document.querySelectorAll('input')
 
-			button.addEventListener('click', generatePDF);
+inputt.forEach((i)=>{
+  i.addEventListener('input',()=>{
+    isChangeInput=true;
+    
+  })
+})
+window.addEventListener('beforeunload',(e)=>{
+ if(isChangeInput){
+  e.preventDefault()
+  e.returnValue=''
+ }
 
-
-
+})
 
 
 
